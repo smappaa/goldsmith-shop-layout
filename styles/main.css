@@ -1,0 +1,360 @@
+/**
+* Website design: Samuli Puolakka / @smappaa on GitHub.
+*/
+
+@font-face {
+  font-family: Mate-Regular;
+  src: url(../fonts/Mate-Regular.ttf);
+}
+
+@font-face {
+  font-family: Tangerine-Bold;
+  src: url(../fonts/Tangerine-Bold.ttf);
+}
+
+@keyframes arrowBgAnimation {
+  50%   {
+    top: -10vh;
+    border-top: 2.5vh solid transparent;
+    border-right: 5vh solid #cfaa5c;
+    border-bottom: 8vh solid #cfaa5c;
+    border-left: 5vh solid #cfaa5c;
+  }
+  60%  {
+    top: -12.5vh;
+    border-top: 2.5vh solid transparent;
+    border-right: 5vh solid #cfaa5c;
+    border-bottom: 10.5vh solid #cfaa5c;
+    border-left: 5vh solid #cfaa5c;
+  }
+  70%  {
+    top: -10vh;
+    border-top: 2.5vh solid transparent;
+    border-right: 5vh solid #cfaa5c;
+    border-bottom: 8vh solid #cfaa5c;
+    border-left: 5vh solid #cfaa5c;
+  }
+}
+
+@keyframes arrowAnimation {
+  0%   {background-position-y: 2.5vh; opacity: 0;}
+  20%  {opacity: 1;}
+  80%  {opacity: 1;}
+  100% {background-position-y: 6vh; opacity: 0;}
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fff;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #aaa;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #888;
+}
+
+::selection {
+  color: #000;
+  background: #f3b12b;
+}
+
+* {
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  box-sizing: border-box;
+  font-family: Mate-Regular, "Times New Roman", Times, serif;
+  cursor: default;
+}
+
+html {
+  font-size: 16px;
+}
+
+header {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0;
+  row-gap: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #cfaa5c;
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../images/precious-stones-processing.jpg");
+  background-size: cover;
+  filter: grayscale(100%) opacity(85%);
+  transform: scaleX(-1);
+  box-shadow: 0 0 20vh 5vh rgba(80,80,80,.3) inset;
+  z-index: -1;
+}
+
+header > * {
+  flex-grow: 1;
+  padding: 0 6.5vw;
+  text-align: center;
+}
+
+h1 {
+  font-family: Tangerine-Bold, "Times New Roman", Times, serif;
+  font-size: clamp(3.5rem, 9vw, 5rem);
+  color: #1a1a1a;
+  text-shadow: -1px 0, 0 1px, 1px 0, 0 -1px, -1px -1px, 1px 1px, -1px 1px, 1px -1px;
+  user-select: none;
+}
+
+h1::first-letter {
+  font-size: clamp(4.5rem, 11vw, 6rem);
+}
+
+header p {
+  font-size: clamp(1rem, 4vw, 1.5rem);
+  color: #eee;
+  text-shadow: 0 0 2rem #000;
+}
+
+#services {
+  position: relative;
+  top: 100vh;
+  height: 210vh;
+  background-color: #cfaa5c;
+  background: linear-gradient(0deg, #f3b12b, #cfaa5c 100%);
+  box-shadow: 0 0 20vh 5vh rgba(25,25,25,.3);
+}
+
+h2 {
+  position: relative;
+  font-family: Tangerine-Bold, "Times New Roman", Times, serif;
+  font-size: clamp(3.5rem, 9vw, 4.5rem);
+  color: white;
+  text-align: center;
+  font-weight: 400;
+}
+
+#services-heading {
+  top: 0vh;
+  padding-top: 10vh;
+}
+
+#arrow {
+  position: absolute;
+  top: -10vh;
+  left: 50vw;
+  margin-left: -5vh;
+  border-top: 2.5vh solid transparent;
+  border-right: 5vh solid #cfaa5c;
+  border-bottom: 8vh solid #cfaa5c;
+  border-left: 5vh solid #cfaa5c;
+  cursor: pointer;
+  transition: all .5s ease-in-out;
+  background-image: url("../images/down-arrow.png");
+  animation-name: arrowBgAnimation;
+  animation-duration: 8s;
+  animation-iteration-count: infinite;
+}
+
+#arrow::before {
+  content: "";
+  position: absolute;
+  top: -2.5vh;
+  left: -5vh;
+  width: 10vh;
+  height: 10vh;
+  background-image: url("../images/down-arrow.png");
+  background-size: 6vh 3vh;
+  background-position-x: center;
+  background-position-y: 4vh;
+  background-repeat: no-repeat;
+  animation-name: arrowAnimation;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+}
+
+#stickies {
+  position: relative;
+  right: 0;
+  margin-top: 20vh;
+  height: inherit;
+  display: grid;
+  grid-template-columns: 1fr calc(5.5rem + 12vw) calc(5.5rem + 12vw) calc(5.5rem + 12vw) 1fr;
+  grid-template-rows: repeat(3, 50vh);
+  grid-template-areas: 
+  ". a d d ."
+  ". . b e e"
+  ". f f c .";
+}
+
+.stickynote {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: max(7.5rem, 10vw);
+  padding: 0 max(1rem, 1.5vw);
+  font-size: clamp(1.1rem, 1.5vw, 2rem);
+  color: #fff;
+  line-height: max(1.75rem, 2.1vw);
+  text-align: center;
+}
+
+.stickynote.diamond-ring {
+  grid-area: d;
+  justify-self: start;
+}
+
+.stickynote.watch {
+  grid-area: e;
+  justify-self: start;
+}
+
+.stickynote.euro-coin {
+  position: sticky;
+  top: 50vh;
+  grid-area: f;
+  justify-self: end;
+}
+
+.sticky {
+  position: sticky;
+  display: block;
+  width: max(7.5rem, 10vw);
+  height: max(7.5rem, 10vw);
+  padding: max(1rem, 1.5vw);
+  top: 30vh;
+  border-radius: 50%;
+  background-color: #fff;
+}
+
+.sticky.diamond-ring {
+  grid-area: a;
+  justify-self: center;
+}
+
+.sticky.watch {
+  grid-area: b;
+  justify-self: center;
+}
+
+.sticky.euro-coin {
+  grid-area: c;
+  justify-self: center;
+}
+
+#contacts {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: space-between;
+  top: 75vh;
+  min-height: 100vh;
+  background-color: rgb(0, 47, 58);
+  box-shadow: 0 0 20vh 10vh #f3b12b;
+}
+
+#contacts::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Pattern from https://www.magicpattern.design/tools/css-backgrounds */
+  background-color: #002f3a;
+  opacity: .5;
+  background: linear-gradient(135deg, #00343f55 25%, transparent 25%) -13px 0/ 26px 26px, linear-gradient(225deg, #00343f 25%, transparent 25%) -13px 0/ 26px 26px, linear-gradient(315deg, #00343f55 25%, transparent 25%) 0px 0/ 26px 26px, linear-gradient(45deg, #00343f 25%, #002f3a 25%) 0px 0/ 26px 26px;
+}
+
+#contacts-heading {
+  padding-top: 10vh;
+  width: 100vw;
+}
+
+#contacts > section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+}
+
+#contact-info {
+  position: relative;
+  padding: 2.5vw 2.5vw 2.5vw 10vw;
+  background-color: #fff;
+  font-size: clamp(1.1rem, 1.5vw, 2rem);
+  outline: .4rem double #fff;
+  line-height: max(1.75rem, 2.1vw);
+}
+
+#contact-info > img {
+  position: absolute;
+  top: -2rem;
+  left: -2rem;
+  display: block;
+  width: max(6rem, 8vw);
+  height: max(6rem, 8vw);
+  padding: max(.8rem, 1.2vw);
+  border-radius: 50%;
+  background-color: #fff;
+  outline: .4rem double #fff;
+  box-shadow: 0 0 0 .7rem rgb(0, 47, 58);
+}
+
+#contact-info p, #contact-info address {
+  padding: .3rem 0;
+  font-style: normal;
+}
+
+#contact-info a {
+  color: #6ac7d7;
+  cursor: pointer;
+}
+
+#contact-info a:visited {
+  color: #f3b12b;
+  cursor: pointer;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 10vh;
+  padding-inline: 5vw;
+  font-size: .8rem;
+  text-align: center;
+  color: #777;
+}
+
+
+@media screen and (max-width: 900px) {
+  #contact-info {
+    position: relative;
+    padding: 6rem 2rem 2rem;
+  }
+  #contact-info > img {
+    left: 50%;
+    margin-left: -3rem;
+  }
+}
